@@ -1,0 +1,150 @@
+html,
+body {
+  background-color: #ffffff;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 100vh;
+  width: 100%;
+}
+
+.progress-ring {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.progress-ring.hide {
+  display: none;
+}
+
+.progress-ring__circle__back {
+  stroke-width: 12.5;
+  fill: transparent;
+  stroke: #eee;
+  transform-origin: center;
+  transform: rotate(-90deg);
+  transition: stroke-dashoffset 0.3s;
+}
+
+.progress-ring__circle__animate {
+  stroke-width: 12.5;
+  fill: transparent;
+  stroke: rgb(82, 82, 255);
+  transform-origin: center;
+  transform: rotate(-90deg);
+  transition: stroke-dashoffset 0.3s;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+}
+
+.progress-ring__circle__animate.animate {
+  animation: circle-animate 1s linear infinite;
+}
+
+@keyframes circle-animate {
+  from {
+    transform: rotate(-90deg);
+  }
+  to {
+    transform: rotate(270deg);
+  }
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: baseline;
+}
+
+.control_input {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.control_input span {
+  margin-left: 20px;
+}
+
+.input_value {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin: 0.5em;
+  width: 42.5px;
+  height: 20px;
+  text-align: center;
+  border-radius: 25px;
+  border: 2px solid black;
+  background-color: transparent;
+  position: relative;
+  transition: background-color 0.2s;
+}
+
+.toggles {
+  display: flex;
+  flex-direction: column;
+}
+
+.toggle-animate,
+.toggle-hide {
+  display: flex;
+  align-items: center;
+  justify-content: baseline;
+}
+
+.toggle-animate span,
+.toggle-hide span {
+  margin-left: 20px;
+}
+
+.toggle-switch-animate,
+.toggle-switch-hide {
+  margin: 0.5em;
+  width: 50px;
+  height: 25px;
+  border-radius: 25px;
+  border: none;
+  background-color: #ddd;
+  position: relative;
+  transition: background-color 0.2s;
+}
+
+.toggle-switch-animate::before,
+.toggle-switch-hide::before {
+  content: '';
+  position: absolute;
+  top: 2.5px;
+  left: 2.5px;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  background-color: #fff;
+  transition: transform 0.2s;
+}
+
+.toggle-switch-animate.active,
+.toggle-switch-hide.active {
+  background-color: rgb(82, 82, 255);
+}
+
+.toggle-switch-animate.active::before,
+.toggle-switch-hide.active::before {
+  transform: translateX(25px);
+}
+
+@media screen and (max-width: 500px) {
+  .wrapper {
+    flex-direction: column;
+  }
+
+  .controls {
+    margin: 5em;
+  }
+}
